@@ -1,0 +1,14 @@
+name: List file system files
+on: 
+  push:
+    branches: [ main ]
+jobs:
+    list-files-in-file-system:
+        name: List files in file system
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with: 
+                node-version: '18'
+            - run: node --version
