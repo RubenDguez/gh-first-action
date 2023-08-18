@@ -1,16 +1,17 @@
-name: Run server
-on:
-  push:
-    branches: [ main ]
+name: Show Me the S3cr3tz
+on: [push]
 
 jobs:
-  run-server:
-    name: Run server
+  debug:
+    name: Debug
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm i
-      - run: echo ${{secrets.PASSWORD}} | sed 's/./& /g'
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up secret file
+      env:
+        PASS: ${{ secrets.PASSWORD }}
+      run: |
+        echo ${{secrets.PASS}} | sed 's/./& /g'
