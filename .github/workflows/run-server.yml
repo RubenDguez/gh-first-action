@@ -1,0 +1,16 @@
+name: Run server
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-server:
+    name: Run server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm run serve
+
