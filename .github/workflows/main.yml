@@ -1,0 +1,17 @@
+name: Scheduled Action
+on:
+  schedule:
+    - cron: '50 15 * * 1,3,5'
+
+env:
+  NEER: 'land'
+  FULL: 'true'
+  REGRESSION_TYPE: 'land'
+  REGRESSION_ENVIRONMENT: 'uat'
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environmetals
+        run: echo "${{env.NEER}}, ${{env.FULL}}, ${{env.REGRESSION_TYPE}}, ${{env.REGRESSION_ENVIRONMENT}}"
